@@ -1,4 +1,4 @@
-# Find all the java files.
+# Find all the java files in src.
 java_files = $(shell find src -name "*.java")
 
 # Once we know the java file paths we can calculate what the class paths should
@@ -12,6 +12,7 @@ class_files = $(subst src,build, \
 # To build everything we need to have built all the class files.
 all: $(class_files)
 
+# .PHONY targets will be run even if a file exists with their name.
 .PHONY: clean
 
 clean:
