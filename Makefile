@@ -12,6 +12,8 @@ class_files = $(subst src,build, \
 # To build everything we need to have built all the class files.
 all: $(class_files)
 
+.PHONY: clean
+
 clean:
 	@rm -rf build
 
