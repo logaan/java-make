@@ -13,10 +13,15 @@ CLASS_FILES = $(subst src,build, \
 all: $(CLASS_FILES)
 
 clean:
-	rm -rf build
+	@rm -rf build
 
 # This target says that any class file depends on a java file of the same name
 # and path. The dependency file will be compiled.
+#
+# @ before command supresses output
+# $(@D) is the directory of the target (the class file).
+# $< is the prerequisite (the java file).
 build/%.class : src/%.java
-	mkdir -p $(dir $@)
-	javac -d $(dir $@) $<
+	@mkdir -p $(@D)
+	@javac -d $(@D) $<
+
